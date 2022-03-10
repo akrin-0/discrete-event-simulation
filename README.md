@@ -1,2 +1,2 @@
 # Discrete Event Simulation
-The aim of this project is to simulate the training procedure of fictonal club which has fictional players and supportive staffs. Discrete event simulation techniques are used.
+This project simulates a fictional club's training procedure with fictional players and support staff. I utilized discrete event simulation techniques for flow of the events.
