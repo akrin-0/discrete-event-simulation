@@ -79,4 +79,3 @@ Output format (examine sample):
 1                | Total number of invalid attempts to get a massage service.
 1                | Total number of canceled attempts including both training and massage attempts.
 20.000           | Total seconds passed during the simulation.
-
