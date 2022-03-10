@@ -1,1 +1,2 @@
-# discrete-event-simulation
+# Discrete Event Simulation
+The aim of this project is to simulate the training procedure of fictonal club which has fictional players and supportive staffs.
