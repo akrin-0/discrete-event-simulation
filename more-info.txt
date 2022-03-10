@@ -1,0 +1,82 @@
+Details (Prepared by Leyla Yayladere)
+
+• There might be multiple training coaches, masseurs and physiotherapists depending on
+the simulation configuration. In this case, every physiotherapist has his/her own service
+time and training, and massage duration depending on the player’s need.
+
+• There are exactly three queues in the system: one for training, one for massage and one
+for physiotherapy. So, each coach shares a common queue and similar for the others.
+
+• The training queue works in first-come-first-served fashion. Thus, the first player to
+enter the queue is served before the others. If two players arrive at the same time, the
+one with the lower ID is served first. When the training of the player is finished, he/she
+enters the physiotherapy queue, immediately.
+
+• Since more training time requires more urgent rehabilitation, physiotherapy queue works
+in a prioritized manner. Therefore, in this queue, the more the training time, the
+higher the priority. If there are more than one player that have the same training
+time, then the one that arrived earlier is served before. If they arrived at the same time
+as well, then the one with the lower ID is served first. Note that, one player may come
+to the training more than one time, for the prioritization, you should consider only the
+current training time not the cumulative.
+
+• Because massage is an advanced service, players should deserve them by their skills.
+Hence, in the massage queue, the higher the skill level, the earlier the service. If
+there are more than one player that are in the same skill level, then the one that arrived
+earlier is served before. If they arrived at the same time as well, then the one with the
+lower ID is served first.
+
+• For all of the services, players visit the first available staff for the service (the available
+staff with the smallest ID) when they leave the queue.
+
+• Each player is allowed to take at most 3 massage service. Hence, whenever a player
+attempts to enter the massage queue 4th time, this is called an “invalid attempt”.
+
+• Since it is hard for the players to estimate how much time they spend in the queues,
+there could be some cases such that players may try to come to the training or massage
+when they are already in the training, physiotherapy or massage process. These attempts
+should be “canceled” so they are called “canceled attempts”.
+
+• One can enter the physiotherapy queue only after the training, no direct entrance is
+possible.
+
+How to compile:
+javac ./discrete-event-simulation.java -d . -release 17
+How to run:
+java discrete-event-simulation <inputfile> <outputfile>
+
+Input format (examine sample):
+3                | There are three players.
+0 2              | The player with ID 0 has a skill level 2.
+1 3              | The player with ID 1 has a skill level 3.
+2 1              | The player with ID 2 has a skill level 1.
+9                | There are 9 arrivals(events) in total.
+t 0 1 1.2        | The player with ID 0 arrives for the training at second 1 and the training lasts 1.2 seconds.
+t 1 1.2 2        |
+m 0 6 3          | The player with ID 1 arrives for the massage at second 6 and the massage lasts 3 seconds.
+m 1 6.3 1.8      |
+m 0 10 1.2       |
+t 2 10.1 4       |
+m 0 15 1.2       |
+m 2 16 1.5       |
+m 0 20 3         |
+1 2              | There is 1 physiotherapist and his/her service time is 2 seconds.
+1 1              | There are 1 training coach and 1 masseur.
+
+Output format (examine sample):
+1                | Maximum length of the training queue. Between seconds 1.2 and 2.2, Player 1 waits for the training.
+0                | Maximum length of the physiotherapy queue.
+1                | Maximum length of the massage queue.
+0.333            | Average waiting time in the training queue.
+0                | Averaage waiting time in the physiotherapy queue.
+0.875            | Average waiting time in the massage queue.
+2.400            | Average training time.
+2.000            | Average physiotherapy time.
+1.800            | Average massage time.
+4.733            | Average turnaround time.
+0 0.000          | ID of the player who spent the most time in the physiotherapy queue and player's waiting time in seconds. If more than one player spent the same amount of time, choose the one with the smallest ID.
+0 0.800          | ID of the player who spent the least time in the massage queue, and the waiting time in seconds among the ones who took three massage services. If more than one player spent the same amount of time, choose the one with the smallest ID. If there is no player that took three massage services, print -1 for both.  
+1                | Total number of invalid attempts to get a massage service.
+1                | Total number of canceled attempts including both training and massage attempts.
+20.000           | Total seconds passed during the simulation.
+
