@@ -1,4 +1,4 @@
-Details (Prepared by Leyla Yayladere)
+Details (Prepared by Berk Atıl)
 
 • There might be multiple training coaches, masseurs and physiotherapists depending on
 the simulation configuration. In this case, every physiotherapist has his/her own service
