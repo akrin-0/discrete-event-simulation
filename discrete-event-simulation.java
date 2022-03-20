@@ -208,7 +208,7 @@ class MassageComparator implements Comparator<Massage> {
 }
 
 
-public class project2main {
+public class discrete-event-simulation {
 	public static void main(String[] args) throws IOException {
 
 		// Read all lines in input
